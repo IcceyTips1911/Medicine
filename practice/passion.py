@@ -41,6 +41,16 @@ if name == "Landon":
 					print("Now shuffling Old School Music.")
 				else:
 					print("Now shuffling music at random.")
+			elif ld_choice == 3:
+				print("Now playing tech podcast.")
+			elif ld_choice == 4:
+				print("Now playing Bible Sermon.")
+		elif reason == 2:
+			print("Why was work not the best today?")
+		elif reason == 3:
+			print("Would you Like for me to call Mrs. Johnson for you?")
+		elif reason == 4:
+			print("How would you like to handle the situation?")
 	elif  6 <= mood <= 10:
 		print("That's good.")
 		print("Please choose something you would like for me to help you with:")
