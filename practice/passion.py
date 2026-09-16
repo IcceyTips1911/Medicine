@@ -28,7 +28,19 @@ if name == "Landon":
 					print("Now shuffling to find the right sounds for you.")
 			elif ld_choice == 2:
 				print("Please select the type of music:")
-				music = int(input("1.Country \n2.Gospel \n3.Rap \n4.R&B \n5.Old School"))
+				music = int(input("1.Country \n2.Gospel \n3.Rap \n4.R&B \n5.Old School \n6.Shuffle Play \nYour Answer: "))
+				if music == 1:
+					print("Now shuffling Country Music.")
+				elif music == 2:
+					print("Now shuffling Gospel Music.")
+				elif music == 3:
+					print("Now shuffling Rap Music.")
+				elif music == 4:
+					print("Now shuffling R&B Music.")
+				elif music == 5:
+					print("Now shuffling Old School Music.")
+				else:
+					print("Now shuffling music at random.")
 	elif  6 <= mood <= 10:
 		print("That's good.")
 		print("Please choose something you would like for me to help you with:")
