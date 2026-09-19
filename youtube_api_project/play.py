@@ -11,7 +11,7 @@ API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise RuntimeError("API_KEY was not found in .env")
 
-SEARCH_QUERY = "rap music to listen to in the background"
+SEARCH_QUERY = "rap music"
 
 
 def get_best_video_url(query):
@@ -50,12 +50,12 @@ def play_video(url):
 
     print("Opening media player...")
 
+    
     subprocess.run([
-        "mpv",
-        "--hwdec=no",
-        url
-    ])
-
+	"mpv",
+	"--really-quiet",
+	url,
+],stderr=subprocess.DEVNULL)
 
 if __name__ == "__main__":
     video_url = get_best_video_url(SEARCH_QUERY)
