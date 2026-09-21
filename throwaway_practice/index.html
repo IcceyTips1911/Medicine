@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Booking Form</title>
 </head>
 <body>
-    
+    <div class="booking-form">
+        <form action="process.php" method="POST" class="booking">
+
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Full Name" required>
+
+            <label for="phone">Phone #:</label>
+            <input type="tel" name="phone" id="phone" placeholder="000-000-0000" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" placeholder="name@email.com" required>
+
+            <button type="submit" name="submit">Submit</button>
+
+        </form>
+    </div>
 </body>
 </html>
