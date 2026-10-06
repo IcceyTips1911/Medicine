@@ -1,3 +1,6 @@
+def mental_health(health):
+	return
+
 name = input("Please tell me your name: ")
 
 
