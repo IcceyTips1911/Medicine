@@ -57,10 +57,10 @@ if 1 <= mood <= 5:
         elif call == 2:
             print("What would you like for me to do?")
         else:
-            print("Not an Input")
+            print("Not a valid response.")
 elif  6 <= mood <= 10:
     print("That's good.")
     print("Please choose something you would like for me to help you with:")
     topics = input("1.Sports \n2.Weather \nYour answer: ")
 else:
-    print("Not valid")
+    print("Not a valid response.")
