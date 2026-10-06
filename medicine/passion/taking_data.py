@@ -1,6 +1,5 @@
 import getpass
 import sqlite3
-#from passion_1 import mental_health
 
 # --- 1. DATABASE SETUP ---
 # Connect to SQLite database (creates the file if it doesn't exist)
@@ -78,7 +77,6 @@ def run_dashboard(username):
             print(f"\n👤 [Profile] Username: {username}")
             print("Status: Active User")
             from passion_2 import test_mental
-
             print(test_mental)
         elif choice == "2":
             print("\n⚙️ [Analytics] Running calculations... System healthy!")

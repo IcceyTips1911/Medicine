@@ -1,4 +1,4 @@
-def test_mental(mental):
+def test_mental():
       return
 
 mood = int(input("How are you feeling today? Please rate your mood a scale from 1-10: "))
