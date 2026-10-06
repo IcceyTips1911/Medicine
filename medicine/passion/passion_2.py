@@ -47,6 +47,17 @@ if 1 <= mood <= 5:
                 print("Would you Like for me to call Mrs. Johnson for you?")
             elif reason == 4:                                    
                 print("How would you like to handle the situation?")
+    elif reason == 2:
+        print("How would you like to relax? ")
+    elif reason == 3:
+        print("Would you like for me to call Mrs. Johnson?")
+        call = int(input("1. Yes \n2. No"))
+        if call == 1:
+            print("Calling Mrs. Johnson")
+        elif call == 2:
+            print("What would you like for me to do?")
+        else:
+            print("Not an Input")
 elif  6 <= mood <= 10:
     print("That's good.")
     print("Please choose something you would like for me to help you with:")
