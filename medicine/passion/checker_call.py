@@ -1,3 +1,6 @@
+def syschecker():
+	return
+
 import subprocess
 import sys
 

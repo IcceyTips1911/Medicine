@@ -79,6 +79,7 @@ def run_dashboard(username):
             from passion_2 import test_mental
             print(test_mental)
         elif choice == "2":
+	    from checker_call import syschecker
             print("\n⚙️ [Analytics] Running calculations... System healthy!")
         elif choice == "3":
             print(f"\n👋 Logged out successfully. Goodbye, {username}!")
