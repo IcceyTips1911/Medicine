@@ -1,47 +1,50 @@
 def syschecker():
 	return
 
-import os
-import shutil
-import signal
 import subprocess
 import sys
+from pathlib import Path
 
-# 1. Search for the script dynamically using the system PATH
-script_name = "syschecker.sh"
-script_path = shutil.which(script_name)
 
-if not script_path:
-    print(f"Error: '{script_name}' could not be found anywhere in your system PATH.")
-    print("Please make sure the script is executable (chmod +x) and moved to a PATH directory.")
-    sys.exit(1)
+def find_bash_script():
+    current_dir = Path(__file__).resolve().parent
 
-print(f"Located script at: {script_path}")
-print("Launching background monitor...")
+    # Search this directory and all parent directories.
+    for directory in (current_dir, *current_dir.parents):
+        candidate = directory / "syschecker.sh"
 
-# 2. Launch the script using the dynamically discovered path
-process = subprocess.Popen(
-    ["bash", script_path],
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE,
-    text=True,
-    preexec_fn=os.setpgrp  # Groups bash and all its child tasks together
-)
+        if candidate.is_file():
+            return candidate
 
-try:
-    # Read the output line by line as the bash script generates it
-    while True:
-        output = process.stdout.readline()
-        if output == '' and process.poll() is not None:
-            break  # Script exited unexpectedly
-        if output:
-            print(output.strip())
-            sys.stdout.flush()  # Force Python to print immediately
-            
-except KeyboardInterrupt:
-    print("\nStopping Python monitor and cleaning up background processes...")
+    return None
+
+
+def syschecker():
+    bash_script = find_bash_script()
+
+    if bash_script is None:
+        print("Error: Could not find syschecker.sh.", file=sys.stderr)
+        return 1
+
+    print(f"\nStarting system checker: {bash_script}\n")
+
     try:
-        # Send SIGTERM to the entire process group
-        os.killpg(os.getpgid(process.pid), signal.SIGTERM)
-    except ProcessLookupError:
-        pass  # Process already exited on its own
+        # Run in the foreground so output appears in the dashboard terminal.
+        result = subprocess.run(
+            ["bash", str(bash_script)],
+            check=False,
+        )
+
+        return result.returncode
+
+    except KeyboardInterrupt:
+        print("\nSystem checker interrupted.")
+        return 130
+
+    except OSError as error:
+        print(f"Error running system checker: {error}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(syschecker())

@@ -80,6 +80,7 @@ def run_dashboard(username):
             print(test_mental)
         elif choice == "2":
             from checker_call import syschecker
+            syschecker()
         elif choice == "3":
             print(f"\n👋 Logged out successfully. Goodbye, {username}!")
             break  # Exits the dashboard loop, effectively logging the user out
