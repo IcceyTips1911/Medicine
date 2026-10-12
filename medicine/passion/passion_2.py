@@ -44,7 +44,7 @@ while True:
                     rb()
                 elif music == 5:
                     print("Now shuffling Old School Music.")
-                    from play import old_sckool()
+                    from play import old_sckool
                     old_sckool()
                 elif music == 6:
                     print("Now shuffling music at random.")
