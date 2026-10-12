@@ -12,43 +12,37 @@ API_KEY = os.getenv("API_KEY")
 if not API_KEY:
     raise RuntimeError("API_KEY was not found in .env")
 
-def rap():
-    SEARCH_QUERY = "rap music"
-    def get_best_video_url(query):
-        try:
-            youtube = build(
-                "youtube",
-                "v3",
-                developerKey=API_KEY
-            )
 
-            request = youtube.search().list(
-                q=query,
-                part="snippet",
-                maxResults=1,
-                type="video"
-            )
+def get_best_video_url(query):
+    try:
+        youtube = build("youtube", "v3", developerKey=API_KEY)
 
-            response = request.execute()
-            items = response.get("items", [])
+        response = youtube.search().list(
+            q=query,
+            part="snippet",
+            maxResults=1,
+            type="video"
+        ).execute()
 
-            if not items:
-                print("No videos found.")
-                return None
+        items = response.get("items", [])
 
-            video_id = items[0]["id"]["videoId"]
-            video_title = items[0]["snippet"]["title"]
-            video_url = f"https://www.youtube.com/watch?v={video_id}"
-
-            print(f"Best match found: {video_title}")
-            print(f"Video URL: {video_url}")
-
-            return video_url
-
-        except HttpError as error:
-            print("YouTube API error:")
-            print(error)
+        if not items:
+            print("No videos found.")
             return None
+
+        video_id = items[0]["id"]["videoId"]
+        video_title = items[0]["snippet"]["title"]
+        video_url = f"https://www.youtube.com/watch?v={video_id}"
+
+        print(f"Best match found: {video_title}")
+        print(f"Video URL: {video_url}")
+
+        return video_url
+
+    except HttpError as error:
+        print("YouTube API error:")
+        print(error)
+        return None
 
 
 def play_video(url):
@@ -59,6 +53,11 @@ def play_video(url):
     webbrowser.open(url)
 
 
-if __name__ == "__main__":
-    video_url = get_best_video_url(SEARCH_QUERY)
+def rap():
+    search_query = "rap music"
+    video_url = get_best_video_url(search_query)
     play_video(video_url)
+
+
+if __name__ == "__main__":
+    rap()
