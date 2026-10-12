@@ -53,11 +53,35 @@ def play_video(url):
     webbrowser.open(url)
 
 
+def country():
+    search_query = "country music"
+    video_url = get_best_video_url(search_query)
+    play_video(video_url)
+
+def gospel():
+    search_query = "gospel music"
+    video_url = get_best_video_url(search_query)
+    play_video(video_url)
+
 def rap():
     search_query = "rap music"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
+def rb():
+    search_query = "R&B music"
+    video_url = get_best_video_url(search_query)
+    play_video(video_url)
+
+def old_sckool():
+    search_query = "90s music"
+    video_url = get_best_video_url(search_query)
+    play_video(video_url)
+
+def top_hits():
+    search_query = "today's top hits music"
+    video_url = get_best_video_url(search_query)
+    play_video(video_url)
 
 if __name__ == "__main__":
     rap()

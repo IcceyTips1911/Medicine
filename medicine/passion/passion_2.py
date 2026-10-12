@@ -28,18 +28,28 @@ while True:
                 music = int(input("1.Country \n2.Gospel \n3.Rap \n4.R&B \n5.Old School \n6.Shuffle Play \nYour Answer: "))
                 if music == 1:
                     print("Now shuffling Country Music.")
+                    from play import country
+                    country()
                 elif music == 2:
                     print("Now shuffling Gospel Music.")
+                    from play import gospel
+                    gospel()
                 elif music == 3:
                     print("Now shuffling Rap Music.")
                     from play import rap
                     rap()
                 elif music == 4:
                     print("Now shuffling R&B Music.")
+                    from play import rb
+                    rb()
                 elif music == 5:
                     print("Now shuffling Old School Music.")
-                else:
+                    from play import old_sckool()
+                    old_sckool()
+                elif music == 6:
                     print("Now shuffling music at random.")
+                    from play import top_hits
+                    top_hits()
             elif ld_choice == 3:
                 print("Now playing tech podcast.")
             elif ld_choice == 4:
