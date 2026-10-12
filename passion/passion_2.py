@@ -1,0 +1,88 @@
+def test_mental():
+      return
+
+mood = int(input("How are you feeling today? Please rate your mood a scale from 1-10: "))
+print(f"Mood scale rating: {mood}")
+
+if 1 <= mood <= 5:
+    print("What is wrong today?")
+    print("Please choose a number to use: ")
+    reason = int(input("1.Long Day \n2.Work was not all that \n3.Missing my lady \n4.Not motivated"))
+    if reason == 1:
+        print("Would you like to have some soft sounds, regular music, podact, or Bible Sermon to help calm you down?")
+        ld_choice = int(input("1.Soft Sounds \n2.General Music \n3.Podcast \n4.Bible Sermon \nYour Answer: "))
+        if ld_choice == 1:
+            print("Is there a specific type of sound you would like for me to play sir?")
+            yon = input("Yes or No \nYour Answer: ")
+            if yon == "yes":
+                sounds = int(input("1.Rain \n2.White Noise \nYour Answer: "))
+                if sounds == 1:
+                    print("Now playing Rain Sounds")
+                elif sounds == 2:
+                    print("Now playing White Sounds")
+                else:
+                    print("Now shuffling sounds.")
+            elif ld_choice == 2:
+                print("Please select the type of music:")
+                music = int(input("1.Country \n2.Gospel \n3.Rap \n4.R&B \n5.Old School \n6.Shuffle Play \nYour Answer: "))
+                if music == 1:
+                    print("Now shuffling Country Music.")
+                elif music == 2:
+                    print("Now shuffling Gospel Music.")
+                elif music == 3:
+                    print("Now shuffling Rap Music.")
+                elif music == 4:
+                    print("Now shuffling R&B Music.")
+                elif music == 5:
+                    print("Now shuffling Old School Music.")
+                else:
+                    print("Now shuffling music at random.")
+            elif ld_choice == 3:
+                print("Now playing tech podcast.")
+            elif ld_choice == 4:
+                print("Now playing Bible Sermon.")
+            elif reason == 2:
+                print("Why was work not the best today?")
+            elif reason == 3:
+                print("Would you Like for me to call Mrs. Johnson for you?")
+            elif reason == 4:
+                print("How would you like to handle the situation?")
+    elif reason == 2:
+        print("How would you like to relax? ")
+    elif reason == 3:
+        print("Would you like for me to call Mrs. Johnson?")
+        call = int(input("1. Yes \n2. No"))
+        if call == 1:
+            print("Calling Mrs. Johnson")
+        elif call == 2:
+            print("What would you like for me to do?")
+        else:
+            print("Not a valid response.")
+elif  6 <= mood <= 10:
+    print("That's good.")
+    print("Please choose something you would like for me to help you with:")
+    topics = input("1.Sports \n2.Weather \nYour answer: ")
+    if topics == 1:
+        print("What sports would you like to hear about?")
+        sports = int(input("1.Basketball \n2.Football \n3.Baseball \n4.Soccer \nChoice: "))
+        if sports == 1:
+            print("Now searching most recent NBA game highlights and stat lines.")
+        elif sports == 2:
+            print("Now searching most recent NFL game highlights and stat lines.")
+        elif sports == 3:
+            print("Now searching most recent MLB game highlights and stat lines.")
+        elif sports == 4:
+            print("Now searching most recent Soccer game highlights and stat lines.")
+        elif topics == 2:
+            print("Would you like to know weather conditions for the: ")
+        weather_forecast = int(input("1.Today \n2.Week \n3.Month \nChoice: "))
+        if weather_forecast == 1:
+            print("Now searching rest of today's forecast.")
+        elif weather_forecast == 2:
+            print("Now searching for the forecast for the rest of the week.")
+        elif weather_forecast == 3:
+            print("Now searching for the forecast for the month.")
+        else:
+            print("Not a valid response.")
+else:
+    print("Not a valid response.")

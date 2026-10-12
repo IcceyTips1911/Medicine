@@ -58,6 +58,8 @@ if 1 <= mood <= 5:
             print("What would you like for me to do?")
         else:
             print("Not a valid response.")
+    elif reason == 4:
+        print("Take a thirty minte break to just relax.")
 elif  6 <= mood <= 10:
     print("That's good.")
     print("Please choose something you would like for me to help you with:")
