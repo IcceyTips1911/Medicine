@@ -68,7 +68,7 @@ def rap():
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
-def rb():
+def rythm_blues():
     search_query = "R&B music"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
