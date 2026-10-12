@@ -42,6 +42,8 @@ while True:
             elif relax_music_choice == 2:
                 print("Let's what else would suit you.")
                 break
+        elif reason == 2:
+            print("Something")
         break
     else:
         print("That is not a proper option")
