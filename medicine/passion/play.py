@@ -1,10 +1,9 @@
 import os
-import subprocess
+import webbrowser
 
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
 
 load_dotenv()
 
@@ -12,7 +11,6 @@ API_KEY = os.getenv("API_KEY")
 
 if not API_KEY:
     raise RuntimeError("API_KEY was not found in .env")
-
 
 SEARCH_QUERY = "rap music"
 
@@ -33,7 +31,6 @@ def get_best_video_url(query):
         )
 
         response = request.execute()
-
         items = response.get("items", [])
 
         if not items:
@@ -42,11 +39,12 @@ def get_best_video_url(query):
 
         video_id = items[0]["id"]["videoId"]
         video_title = items[0]["snippet"]["title"]
+        video_url = f"https://www.youtube.com/watch?v={video_id}"
 
         print(f"Best match found: {video_title}")
-        print(f"Video URL: https://www.youtube.com/watch?v={video_id}")
+        print(f"Video URL: {video_url}")
 
-        return f"https://www.youtube.com/watch?v={video_id}"
+        return video_url
 
     except HttpError as error:
         print("YouTube API error:")
@@ -58,25 +56,8 @@ def play_video(url):
     if not url:
         return
 
-    print("Opening media player...")
-
-    try:
-        subprocess.run(
-            [
-                "mpv",
-                "--no-video",
-                url
-            ],
-            check=True
-        )
-
-    except FileNotFoundError:
-        print("MPV was not found.")
-        print("Install MPV with:")
-        print("sudo apt install mpv")
-
-    except subprocess.CalledProcessError as error:
-        print(f"MPV exited with an error: {error}")
+    print("Opening YouTube in your browser...")
+    webbrowser.open(url)
 
 
 if __name__ == "__main__":
