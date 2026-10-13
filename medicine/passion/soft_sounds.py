@@ -52,36 +52,27 @@ def play_video(url):
     print("Opening YouTube in your browser...")
     webbrowser.open(url)
 
-
-def country():
-    search_query = "country music"
+def white_noise():
+    search_query = "white noise"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
-def gospel():
-    search_query = "gospel music"
+def rain_noise():
+    search_query = "rain sounds"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
-def rap():
-    search_query = "rap music"
+def ocean_waves():
+    search_query = "ocean waves"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
-def rythm_blues():
-    search_query = "R&B music"
+def wind_trees():
+    search_query = "wind brustling against trees"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
 
-def old_sckool():
-    search_query = "90s music"
+def camp_fire():
+    search_query = "camp fire sounds"
     video_url = get_best_video_url(search_query)
     play_video(video_url)
-
-def top_hits():
-    search_query = "today's top hits music"
-    video_url = get_best_video_url(search_query)
-    play_video(video_url)
-
-if __name__ == "__main__":
-    rap()
