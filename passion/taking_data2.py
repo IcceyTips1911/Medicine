@@ -1,16 +1,16 @@
 import getpass
 import sqlite3
 
+#DATABASE SETUP
 conn = sqlite3.connect("users_dashboard.db")
 cursor = conn.cursor()
 
-
-#Create table for users
+# Create a table for users
 cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMMARY KEY AUTOINCREMENT,
-        username TEXT NIQE NOT NULL,
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE NOT NULL,
         password TEXT NOT NULL
     )
 """
@@ -20,13 +20,13 @@ conn.commit()
 #Authentication Functions
 def register_user():
     """Takes user input and stores a new user in the database."""
-    print("\n--- 📝 Create a New Account ---")
+    print("\n--- Create a New Account ---")
     username = input("Enter a new username: ").strip()
     # getpass hides the password typing in most terminals
     password = getpass.getpass("Enter a new password: ")
 
     if not username or not password:
-        print("❌ Username and password cannot be empty.")
+        print("Username and password cannot be empty.")
         return
 
     try:
@@ -35,14 +35,14 @@ def register_user():
             (username, password),
         )
         conn.commit()
-        print("✅ Registration successful! You can now log in.")
+        print("Registration successful! You can now log in.")
     except sqlite3.IntegrityError:
-        print("❌ That username is already taken. Try another one.")
+        print("That username is already taken. Try another one.")
 
 
 def login_user():
     """Verifies user credentials against the database."""
-    print("\n--- 🔐 Log In ---")
+    print("\n--- Log In ---")
     username = input("Username: ").strip()
     password = getpass.getpass("Password: ")
 
@@ -54,10 +54,10 @@ def login_user():
     user = cursor.fetchone()
 
     if user:
-        print(f"\n✅ Login successful! Welcome back, {username}.")
+        print(f"\nLogin successful! Welcome back, {username}.")
         run_dashboard(username)  # Send the user to the dashboard
     else:
-        print("❌ Invalid username or password.")
+        print("Invalid username or password.")
 
 
 def run_dashboard(username):
@@ -69,9 +69,12 @@ def run_dashboard(username):
 
         choice = input("Select an option (1-3): ").strip()
 
-        if choice ==1:
+        if choice == "1":
             from checker_call import syschecker
             syschecker()
+        elif choice == "3":
+            print(f"\n Logged out successfully. Goodbye, {username}!")
+            break
         else:
             print("Invalid choice. Please pick 1, 2, or 3.")
 
