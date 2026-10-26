@@ -1,12 +1,10 @@
 import getpass
 import sqlite3
 
-# --- 1. DATABASE SETUP ---
-# Connect to SQLite database (creates the file if it doesn't exist)
 conn = sqlite3.connect("users_dashboard.db")
 cursor = conn.cursor()
 
-# Create a table for users
+#Create a table for users
 cursor.execute(
     """
     CREATE TABLE IF NOT EXISTS users (
@@ -19,7 +17,7 @@ cursor.execute(
 conn.commit()
 
 
-# --- 2. AUTHENTICATION FUNCTIONS ---
+#Authentication Functions
 def register_user():
     """Takes user input and stores a new user in the database."""
     print("\n--- 📝 Create a New Account ---")
@@ -62,33 +60,23 @@ def login_user():
         print("❌ Invalid username or password.")
 
 
-# --- 3. DASHBOARD & FEATURES ---
 def run_dashboard(username):
-    """The main dashboard area after a successful login."""
+    """The main dashboard area after a sccessful login."""
+
     while True:
-        print(f"\n=== 📊 DASHBOARD ({username}) ===")
-        print("1. Mood Analysis")
-        print("2. Run Analytics Tool")
-        print("3. Log Out")
+        print(f"\n=== Dashboard({username})===")
+        print("1. Run System Anaytics Tool")
 
         choice = input("Select an option (1-3): ").strip()
 
-        if choice == "1":
-            print(f"\n👤 [Profile] Username: {username}")
-            print("Status: Active User")
-            from passion_2 import test_mental
-            print(test_mental)
-        elif choice == "2":
+        if choice ==1:
             from checker_call import syschecker
             syschecker()
-        elif choice == "3":
-            print(f"\n👋 Logged out successfully. Goodbye, {username}!")
-            break  # Exits the dashboard loop, effectively logging the user out
         else:
-            print("❌ Invalid choice. Please pick 1, 2, or 3.")
+            print("Invalid choice. Please pick 1, 2, or 3.")
 
 
-# --- 4. MAIN PROGRAM LOOP ---
+#MAIN PROGRAM LOOP
 def main():
     while True:
         print("\n=== 🔑 MAIN MENU ===")
