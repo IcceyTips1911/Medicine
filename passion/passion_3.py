@@ -67,11 +67,11 @@ while True:
                         camp_fire()
                 elif relax_choice == 2:
                     print("Now playing a tech podcast...")
-                    from podcast import tech_podcast
+                    from podcast_videos import tech_podcast
                     tech_podcast()
                 elif relax_choice == 3:
                     print("Now playing a Bible Sermon...")
-                    from podcast import bible_sermon
+                    from podcast_videos import bible_sermon
                     bible_sermon()
                 break
         elif reason == 2:

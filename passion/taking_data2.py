@@ -61,7 +61,7 @@ def login_user():
 
 
 def run_dashboard(username):
-    """The main dashboard area after a sccessful login."""
+    """The main dashboard area after a successful login."""
 
     while True:
         print(f"\n=== Dashboard({username})===")
@@ -82,7 +82,7 @@ def run_dashboard(username):
 #MAIN PROGRAM LOOP
 def main():
     while True:
-        print("\n=== 🔑 MAIN MENU ===")
+        print("\n=== MAIN MENU ===")
         print("1. Register")
         print("2. Log In")
         print("3. Exit Program")
@@ -97,7 +97,7 @@ def main():
             print("\nClosing application. Goodbye!")
             break
         else:
-            print("❌ Invalid choice. Please pick 1, 2, or 3.")
+            print("Invalid choice. Please pick 1, 2, or 3.")
 
     # Close connection when exiting the entire script
     conn.close()
